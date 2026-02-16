@@ -32,4 +32,60 @@
  */
 export function getSeasonActivity(month, temperature) {
   // Your code here
+
+  const monthObj = {
+    "Winter": [1, 2, 12],
+    "Spring": [3, 4, 5],
+    "Summer": [6, 7, 8],
+    "Autumn": [9, 10, 11]
+  }
+
+  const returnObj = {
+    season: null,
+    activity: null
+  }
+
+  if (month >= 1 && month <= 12) {
+
+
+    if (monthObj["Winter"].includes(month)) {
+      returnObj.season = "Winter"
+      if (temperature < 0) {
+        returnObj.activity = "skiing"
+      } else {
+        returnObj.activity = "ice skating"
+      }
+    } else if (monthObj["Spring"].includes(month)) {
+      returnObj.season = "Spring"
+
+      if (temperature > 20) {
+        returnObj.activity = "hiking"
+      } else {
+        returnObj.activity = "museum visit"
+      }
+    } else if (monthObj["Summer"].includes(month)) {
+
+      returnObj.season = "Summer"
+
+      if (temperature > 35) {
+        returnObj.activity = "swimming"
+      } else {
+        returnObj.activity = "cycling"
+      }
+
+    } else {
+      returnObj.season = "Autumn"
+
+      if (temperature > 15) {
+        returnObj.activity = "nature walk"
+      } else {
+        returnObj.activity = "reading at a cafe"
+      }
+    }
+
+  } else {
+    return null
+  }
+
+  return returnObj
 }
